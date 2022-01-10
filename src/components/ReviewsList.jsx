@@ -1,10 +1,22 @@
+import { useState, useEffect } from "react";
+import { getReviews } from "../utilis/api";
 import ReviewCard from "./ReviewCard";
 
 const ReviewsList = () => {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    getReviews().then(({ data }) => setReviews(data.reviews));
+  }, []);
+
   return (
     <div className="reviewsList">
       <h1>This is the review list</h1>
-      <ReviewCard />
+      <ul>
+        {reviews.map((review) => {
+          return <ReviewCard review={review} />;
+        })}
+      </ul>
     </div>
   );
 };

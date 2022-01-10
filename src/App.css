@@ -5,3 +5,7 @@
 .Nav {
   border-bottom: 1px black solid;
 }
+
+.reviewCard {
+  border: 3px red dotted;
+}
