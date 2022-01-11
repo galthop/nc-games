@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const ReviewCard = ({ review }) => {
   return (
     <div className="reviewCard">
-      <li key={review.review_id}>
+      <li>
         <h2>{review.title}</h2>
         <h3>By {review.owner}</h3>
         <h4>Category: {review.category}</h4>
