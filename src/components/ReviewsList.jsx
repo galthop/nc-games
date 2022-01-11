@@ -2,12 +2,12 @@ import { useState, useEffect } from "react";
 import { getReviews } from "../utilis/api";
 import ReviewCard from "./ReviewCard";
 
-const ReviewsList = () => {
+const ReviewsList = ({ selectedCategory }) => {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getReviews().then(({ data }) => setReviews(data.reviews));
-  }, []);
+    getReviews(selectedCategory).then(({ data }) => setReviews(data.reviews));
+  }, [selectedCategory]);
 
   return (
     <div className="reviewsList">

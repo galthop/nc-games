@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { getCategories } from "../utilis/api";
 
-const Query = () => {
+const Query = ({ setSelectedCategory }) => {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -10,11 +10,16 @@ const Query = () => {
     });
   }, []);
 
+  const filterCat = (event) => {
+    setSelectedCategory(event.target.value);
+    console.log("category changed");
+  };
+
   return (
     <div className="query">
       <h1>This is the dropdown + other querying tools</h1>
-      <select defaultValue={"all"}>
-        <option value="all">All</option>
+      <select defaultValue="All" onChange={filterCat}>
+        <option value="All">All</option>
         {categories.map((category) => {
           return (
             <option key={category.slug} value={category.slug}>

@@ -5,6 +5,9 @@ const gamesApi = axios.create({
 });
 
 export const getReviews = (selectedCategory) => {
+  if (selectedCategory === "All") {
+    selectedCategory = undefined;
+  }
   return gamesApi
     .get("/reviews", {
       params: { category: selectedCategory },
