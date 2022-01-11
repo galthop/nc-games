@@ -13,3 +13,10 @@ export const getReviews = (selectedCategory) => {
       return res;
     });
 };
+// for querying (params)
+
+export const getReviewById = (reviewNum) => {
+  return gamesApi.get(`/reviews/${reviewNum}`).then((res) => {
+    return res;
+  });
+};
