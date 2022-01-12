@@ -43,3 +43,12 @@ export const getComments = (review_id) => {
 export const deleteComment = (comment_id) => {
   return gamesApi.delete(`/comments/${comment_id}`);
 };
+
+export const postComment = (review_id, user, post) => {
+  return gamesApi
+    .post(`/reviews/${review_id}/comments`)
+    .send({ username: user, body: post })
+    .then((res) => {
+      return res;
+    });
+};

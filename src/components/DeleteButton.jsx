@@ -22,6 +22,8 @@ const DeleteButton = ({ comment, setComments }) => {
       });
   };
 
+  // this will produce an error message where the button was --- this is easy to miss and does not make much sense
+  // CHANGE
   if (error) {
     return <ErrorPage error={error} />;
   }
