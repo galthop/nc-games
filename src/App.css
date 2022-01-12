@@ -9,3 +9,7 @@
 .reviewCard {
   border: 3px red dotted;
 }
+
+.commentCard {
+  border: 3px green double;
+}

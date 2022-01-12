@@ -39,3 +39,7 @@ export const getComments = (review_id) => {
     return res;
   });
 };
+
+export const deleteComment = (comment_id) => {
+  return gamesApi.delete(`/comments/${comment_id}`);
+};
