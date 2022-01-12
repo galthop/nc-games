@@ -4,13 +4,17 @@ const gamesApi = axios.create({
   baseURL: "https://northcoders-backend-hiten.herokuapp.com/api",
 });
 
-export const getReviews = (selectedCategory) => {
+export const getReviews = (selectedCategory, selectedSortBy, selectedOrder) => {
   if (selectedCategory === "All") {
     selectedCategory = undefined;
   }
   return gamesApi
     .get("/reviews", {
-      params: { category: selectedCategory },
+      params: {
+        category: selectedCategory,
+        sort_by: selectedSortBy,
+        order: selectedOrder,
+      },
     })
     .then((res) => {
       return res;
@@ -26,6 +30,12 @@ export const getReviewById = (reviewNum) => {
 
 export const getCategories = () => {
   return gamesApi.get("/categories").then((res) => {
+    return res;
+  });
+};
+
+export const getComments = (review_id) => {
+  return gamesApi.get(`/reviews/${review_id}/comments`).then((res) => {
     return res;
   });
 };

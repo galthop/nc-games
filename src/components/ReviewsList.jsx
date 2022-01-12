@@ -1,13 +1,23 @@
 import { useState, useEffect } from "react";
 import { getReviews } from "../utilis/api";
 import ReviewCard from "./ReviewCard";
+import ErrorPage from "./ErrorPage";
 
-const ReviewsList = ({ selectedCategory }) => {
+const ReviewsList = ({ selectedCategory, selectedSortBy, selectedOrder }) => {
   const [reviews, setReviews] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getReviews(selectedCategory).then(({ data }) => setReviews(data.reviews));
-  }, [selectedCategory]);
+    getReviews(selectedCategory, selectedSortBy, selectedOrder)
+      .then(({ data }) => setReviews(data.reviews))
+      .catch((err) => {
+        setError(err);
+      });
+  }, [selectedCategory, selectedOrder, selectedSortBy]);
+
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
 
   return (
     <div className="reviewsList">

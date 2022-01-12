@@ -1,8 +1,16 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getCategories } from "../utilis/api";
 
-const Query = ({ setSelectedCategory }) => {
+const Query = ({
+  setSelectedCategory,
+  selectedOrder,
+  setSelectedOrder,
+  setSelectedSortBy,
+}) => {
   const [categories, setCategories] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     getCategories().then(({ data }) => {
@@ -12,7 +20,15 @@ const Query = ({ setSelectedCategory }) => {
 
   const filterCat = (event) => {
     setSelectedCategory(event.target.value);
-    console.log("category changed");
+  };
+
+  const filterSortBy = (event) => {
+    setSelectedSortBy(event.target.value);
+  };
+
+  const filterOrder = (event) => {
+    setSelectedOrder(selectedOrder === "desc" ? "asc" : "desc");
+    console.log(selectedOrder);
   };
 
   return (
@@ -28,7 +44,13 @@ const Query = ({ setSelectedCategory }) => {
           );
         })}
       </select>
-      <button>ASC/DESC</button>
+
+      <select defaultValue="created_at" onChange={filterSortBy}>
+        <option value="created_at">Created at</option>
+        <option value="comment_count">Number of comments</option>
+        <option value="votes">Number of votes</option>
+      </select>
+      <button onClick={filterOrder}>Selected: {selectedOrder}</button>
     </div>
   );
 };
