@@ -46,8 +46,7 @@ export const deleteComment = (comment_id) => {
 
 export const postComment = (review_id, user, post) => {
   return gamesApi
-    .post(`/reviews/${review_id}/comments`)
-    .send({ username: user, body: post })
+    .post(`/reviews/${review_id}/comments`, { username: user, body: post })
     .then((res) => {
       return res;
     });

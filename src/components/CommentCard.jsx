@@ -1,6 +1,26 @@
 import DeleteButton from "./DeleteButton";
+import { deleteComment } from "../utilis/api";
+import { useState } from "react";
 
 const CommentCard = ({ comment, setComments }) => {
+  const [error, setError] = useState(null);
+  const handleDelete = (id) => {
+    console.log("you deleted a comment");
+    deleteComment(id)
+      .then(() => {
+        setComments((currentComments) => {
+          const result = currentComments.filter((comment) => {
+            return comment.comment_id !== id;
+          });
+          return result;
+        });
+      })
+      .catch((err) => {
+        console.log("error", err);
+        setError(err);
+      });
+  };
+
   return (
     <div className="commentCard">
       <li key={comment.comment_id}>
@@ -9,7 +29,12 @@ const CommentCard = ({ comment, setComments }) => {
         </h3>
         <p>{comment.body}</p>
         <h4>Number of votes: {comment.votes}</h4>
-        <DeleteButton comment={comment} setComments={setComments} />
+        <DeleteButton
+          comment={comment}
+          setComments={setComments}
+          handleDelete={handleDelete}
+          error={error}
+        />
       </li>
     </div>
   );

@@ -3,24 +3,31 @@ import { useParams } from "react-router-dom";
 import { postComment } from "../utilis/api";
 import ErrorPage from "./ErrorPage";
 
-const AddComment = () => {
+const AddComment = ({ setComments }) => {
   const { review_id } = useParams();
   const [error, setError] = useState(null);
-
   const [post, setPost] = useState("");
+
   const handleSubmit = (event) => {
-    event.preventDefault();
+    //event.preventDefault();
+
     postComment(review_id, "jessjelly", post)
-      .then(() => {
+      .then((res) => {
+        setComments((currentComments) => [
+          ...currentComments,
+          res.data.comment,
+        ]);
         console.log("comment posted");
       })
       .catch((err) => {
         setError(err);
       });
+    setPost("");
   };
 
+  // CHANGE
   if (error) {
-    return <ErrorPage error={error} />;
+    <ErrorPage error={error} />;
   }
 
   return (

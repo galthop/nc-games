@@ -2,25 +2,25 @@ import { deleteComment } from "../utilis/api";
 import { useState } from "react";
 import ErrorPage from "./ErrorPage";
 
-const DeleteButton = ({ comment, setComments }) => {
+const DeleteButton = ({ comment, setComments, handleDelete, error }) => {
   const user = comment.author;
   const comment_id = comment.comment_id;
-  const [error, setError] = useState(null);
+  //const [error, setError] = useState(null);
 
-  const handleClick = () => {
-    setComments((currentComments) => {
-      const updatedComments = [...currentComments];
-      const indexOfComment = updatedComments.indexOf(comment);
-      currentComments.splice(indexOfComment, 1);
-      return updatedComments;
-    });
-    console.log("you deleted a comment");
-    deleteComment(comment_id)
-      .then(() => {})
-      .catch((err) => {
-        setError(err);
-      });
-  };
+  // const handleDelete = () => {
+  //   console.log("you deleted a comment");
+  //   deleteComment(comment_id)
+  //     .then(() => {
+  //       setComments((currentComments) => {
+  //         return currentComments.filter((comment) => {
+  //           return comment.comment_id !== comment_id;
+  //         });
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       setError(err);
+  //     });
+  // };
 
   // this will produce an error message where the button was --- this is easy to miss and does not make much sense
   // CHANGE
@@ -30,7 +30,10 @@ const DeleteButton = ({ comment, setComments }) => {
 
   //assuming jessjelly is logged in and can delete their comments (but no one else's)
   return user === "jessjelly" ? (
-    <button className="deleteButton-enabled" onClick={handleClick}>
+    <button
+      className="deleteButton-enabled"
+      onClick={() => handleDelete(comment.comment_id)}
+    >
       Delete comment
     </button>
   ) : (

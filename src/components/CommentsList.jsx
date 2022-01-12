@@ -1,25 +1,8 @@
-import { useState, useEffect } from "react";
-import { getComments } from "../utilis/api";
 import CommentCard from "./CommentCard";
 import ErrorPage from "./ErrorPage";
-import { useParams } from "react-router-dom";
 
-const CommentsList = () => {
-  const [comments, setComments] = useState([]);
-  const [error, setError] = useState(null);
-  const { review_id } = useParams();
-
-  useEffect(() => {
-    getComments(review_id)
-      .then(({ data }) => setComments(data.comments))
-      .catch((err) => {
-        setError(err);
-      });
-  }, []);
-
-  if (error) {
-    return <ErrorPage error={error} />;
-  }
+const CommentsList = ({ comments, setComments }) => {
+  console.log(comments);
 
   return (
     <div className="commentsList">
