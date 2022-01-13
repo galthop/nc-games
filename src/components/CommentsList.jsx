@@ -1,5 +1,4 @@
 import CommentCard from "./CommentCard";
-import ErrorPage from "./ErrorPage";
 
 const CommentsList = ({ comments, setComments }) => {
   console.log(comments);

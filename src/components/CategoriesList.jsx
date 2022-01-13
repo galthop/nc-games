@@ -22,9 +22,9 @@ const CategoriesList = () => {
   }
 
   return (
-    <div className="categoryList">
-      <h1>Game types</h1>
-      <ul>
+    <div className="categoriesList">
+      <h1 className="categoriesHeader">Game types</h1>
+      <ul className="theList">
         {categories.map((category) => {
           return (
             <CategoryCard category={category} key={category.category_id} />
