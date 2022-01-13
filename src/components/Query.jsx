@@ -35,7 +35,7 @@ const Query = ({
   return (
     <div className="query">
       <h1>This is the dropdown + other querying tools</h1>
-      <select selected={category} onChange={filterCat}>
+      <select value={category} onChange={filterCat}>
         <option value="All">All</option>
         {categories.map((specificcategory) => {
           return (
