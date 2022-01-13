@@ -8,9 +8,7 @@ const AddComment = ({ setComments }) => {
   const [error, setError] = useState(null);
   const [post, setPost] = useState("");
 
-  const handleSubmit = (event) => {
-    //event.preventDefault();
-
+  const handleSubmit = () => {
     postComment(review_id, "jessjelly", post)
       .then((res) => {
         setComments((currentComments) => [

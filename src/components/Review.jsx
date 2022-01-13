@@ -1,6 +1,6 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getReviewById, patchLikes } from "../utilis/api";
+import { getReviewById, patchReviewLikes } from "../utilis/api";
 import ErrorPage from "./ErrorPage";
 
 const Review = () => {
@@ -10,7 +10,7 @@ const Review = () => {
 
   const changeVotes = () => {
     setVotes((currentLikes) => currentLikes + 1);
-    patchLikes(review_id, 1).catch((err) => {
+    patchReviewLikes(review_id, 1).catch((err) => {
       setVotes((currentLikes) => currentLikes - 1);
       setError(err);
     });

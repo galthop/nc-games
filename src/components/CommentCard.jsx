@@ -1,6 +1,7 @@
 import DeleteButton from "./DeleteButton";
 import { deleteComment } from "../utilis/api";
 import { useState } from "react";
+import ErrorPage from "./ErrorPage";
 
 const CommentCard = ({ comment, setComments }) => {
   const [error, setError] = useState(null);
@@ -21,6 +22,10 @@ const CommentCard = ({ comment, setComments }) => {
       });
   };
 
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
+
   return (
     <div className="commentCard">
       <li key={comment.comment_id}>
@@ -33,7 +38,6 @@ const CommentCard = ({ comment, setComments }) => {
           comment={comment}
           setComments={setComments}
           handleDelete={handleDelete}
-          error={error}
         />
       </li>
     </div>
