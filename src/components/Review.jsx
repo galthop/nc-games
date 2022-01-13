@@ -1,15 +1,19 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { getReviewById } from "../utilis/api";
+import { getReviewById, patchLikes } from "../utilis/api";
 import ErrorPage from "./ErrorPage";
 
 const Review = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState([]);
-  const [votesClicked, setVotesClicked] = useState(false);
+  const [votes, setVotes] = useState(0);
 
   const changeVotes = () => {
-    setVotesClicked(votesClicked === false ? true : false);
+    setVotes((currentLikes) => currentLikes + 1);
+    patchLikes(review_id, 1).catch((err) => {
+      setVotes((currentLikes) => currentLikes - 1);
+      setError(err);
+    });
   };
 
   //
@@ -19,7 +23,8 @@ const Review = () => {
   useEffect(() => {
     getReviewById(review_id)
       .then(({ data }) => {
-        return setReview(data.review);
+        setReview(data.review);
+        setVotes(data.review.votes);
       })
       .catch((err) => {
         setError(err);
@@ -49,7 +54,7 @@ const Review = () => {
         <h4>Game's designer: {review.designer}</h4>
         <h4>Category: {review.category}</h4>
       </section>
-      <button onClick={changeVotes}>Votes: {review.votes}</button>
+      <button onClick={changeVotes}>Votes: {votes}</button>
       <Link to={`/reviews/${review_id}/comments`}>
         Comments: {review.comment_count}
       </Link>

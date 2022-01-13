@@ -51,3 +51,9 @@ export const postComment = (review_id, user, post) => {
       return res;
     });
 };
+
+export const patchLikes = (review_id) => {
+  return gamesApi
+    .patch(`/reviews/${review_id}`, { inc_votes: 1 })
+    .then((res) => console.log(res));
+};
