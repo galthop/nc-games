@@ -21,16 +21,13 @@ const CommentsPage = () => {
       });
   }, [review_id]);
 
-  console.log(comments);
-
   if (error) {
     return <ErrorPage error={error} />;
   }
   return (
     <div className="commentsPage">
-      <h1>Comments for {review_id}</h1>
+      <h1>Comments for review #{review_id}</h1>
       <AddComment setComments={setComments} />
-      <h1>These are the comments of a specific review</h1>
       <CommentsList comments={comments} setComments={setComments} />
     </div>
   );

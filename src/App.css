@@ -1,14 +1,30 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: 50vw auto;
+  grid-template-rows: 12vh auto;
+  grid-template-areas:
+    "nav nav"
+    "contents contents";
 }
 
 .Nav {
   border-bottom: 1px black solid;
-  background-color: brown;
+  background-color: red;
+  grid-area: nav;
 }
 
 .Nav > * {
   margin: 0px;
+}
+
+.Nav > h2 {
+  padding: 20px;
+  text-decoration: underline;
+}
+
+.Nav > Link {
+  padding: 20px;
 }
 
 .reviewCard {
@@ -24,6 +40,7 @@
   margin: 0px;
   display: flex;
   flex-wrap: wrap;
+  grid-area: contents;
 }
 
 .categoriesHeader {
@@ -48,17 +65,31 @@
 ul {
   margin: 0px;
   list-style-type: none;
-  padding-left: 10px;
+  padding: 0px;
 }
 
-/* .box {
-  background: #e46058;
-  padding: 2rem;
-  margin: 1rem;
-  flex: auto;
+.reviewById {
+  grid-area: contents;
+  background-color: aquamarine;
 }
 
-#container {
-  display: flex;
-  flex-wrap: wrap;
-} */
+.reviewById img {
+  max-width: 100%;
+  max-height: auto;
+}
+
+.reviewspage {
+  grid-area: contents;
+  background-color: aquamarine;
+}
+
+.commentsPage {
+  grid-area: contents;
+  background-color: aquamarine;
+}
+
+.query {
+  margin-top: 0px;
+  padding-top: 0px;
+  padding-bottom: 10px;
+}

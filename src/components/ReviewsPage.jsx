@@ -2,30 +2,33 @@ import Query from "./Query";
 import ReviewsList from "./ReviewsList";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import ErrorPage from "./ErrorPage";
 
 const ReviewsPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSortBy, setSelectedSortBy] = useState("created_at");
   const [selectedOrder, setSelectedOrder] = useState("desc");
+  const [error, setError] = useState(null);
 
   const { category } = useParams();
 
+  if (error) {
+    return <ErrorPage error={error} />;
+  }
+
   return (
     <div className="reviewspage">
-      <h1>This is the homepage</h1>
       <Query
-        setSelectedCategory={setSelectedCategory}
         setSelectedSortBy={setSelectedSortBy}
         setSelectedOrder={setSelectedOrder}
         selectedOrder={selectedOrder}
         category={category}
+        setError={setError}
       />
       <ReviewsList
-        setSelectedCategory={setSelectedCategory}
-        selectedCategory={selectedCategory}
         selectedSortBy={selectedSortBy}
         selectedOrder={selectedOrder}
         category={category}
+        setError={setError}
       />
     </div>
   );

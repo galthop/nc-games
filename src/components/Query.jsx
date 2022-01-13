@@ -3,23 +3,26 @@ import { useNavigate } from "react-router-dom";
 import { getCategories } from "../utilis/api";
 
 const Query = ({
-  setSelectedCategory,
   selectedOrder,
   setSelectedOrder,
   setSelectedSortBy,
   category,
+  setError,
 }) => {
   const [categories, setCategories] = useState([]);
-
   const navigate = useNavigate();
+
   useEffect(() => {
-    getCategories().then(({ data }) => {
-      return setCategories(data.categories);
-    });
+    getCategories()
+      .then(({ data }) => {
+        return setCategories(data.categories);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, []);
 
   const filterCat = (event) => {
-    setSelectedCategory(event.target.value);
     navigate(`/category/${event.target.value}`);
   };
 
@@ -34,7 +37,7 @@ const Query = ({
 
   return (
     <div className="query">
-      <h1>This is the dropdown + other querying tools</h1>
+      <h4>Search for reviews below</h4>
       <select value={category} onChange={filterCat}>
         <option value="All">All</option>
         {categories.map((specificCategory) => {
