@@ -14,7 +14,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<ReviewsPage />} />
-          <Route path="/category/:category" element={<ReviewsPage />} />
+          <Route path="/reviews" element={<ReviewsPage />} />
           <Route
             path="/category/:category/order/:order/sort_by/:sort_by"
             element={<ReviewsPage />}

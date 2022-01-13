@@ -5,6 +5,10 @@ const ErrorPage = (props) => {
         <h4>An error has occurred. Here are the specifics</h4>
         <p>Status code: {props.error.response.status}</p>
         <p>Error message: {props.error.response.data.msg}</p>
+        <p>
+          Use the navigation bar to move to a different page, or refresh the
+          page and try again
+        </p>
       </div>
     );
   } else {

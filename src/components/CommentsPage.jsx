@@ -28,7 +28,7 @@ const CommentsPage = () => {
   }
   return (
     <div className="commentsPage">
-      <h1>Here is the post comment form</h1>
+      <h1>Comments for {review_id}</h1>
       <AddComment setComments={setComments} />
       <h1>These are the comments of a specific review</h1>
       <CommentsList comments={comments} setComments={setComments} />

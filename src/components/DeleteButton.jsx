@@ -1,10 +1,5 @@
-import { deleteComment } from "../utilis/api";
-import { useState } from "react";
-import ErrorPage from "./ErrorPage";
-
 const DeleteButton = ({ comment, handleDelete }) => {
   const user = comment.author;
-  const comment_id = comment.comment_id;
 
   //assuming jessjelly is logged in and can delete their comments (but no one else's)
   return user === "jessjelly" ? (

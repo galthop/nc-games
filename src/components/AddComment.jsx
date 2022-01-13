@@ -25,7 +25,7 @@ const AddComment = ({ setComments }) => {
 
   // CHANGE
   if (error) {
-    <ErrorPage error={error} />;
+    return <ErrorPage error={error} />;
   }
 
   return (
