@@ -7,11 +7,11 @@ const Query = ({
   selectedOrder,
   setSelectedOrder,
   setSelectedSortBy,
+  category,
 }) => {
   const [categories, setCategories] = useState([]);
 
   const navigate = useNavigate();
-
   useEffect(() => {
     getCategories().then(({ data }) => {
       return setCategories(data.categories);
@@ -20,6 +20,7 @@ const Query = ({
 
   const filterCat = (event) => {
     setSelectedCategory(event.target.value);
+    navigate(`/category/${event.target.value}`);
   };
 
   const filterSortBy = (event) => {
@@ -34,12 +35,12 @@ const Query = ({
   return (
     <div className="query">
       <h1>This is the dropdown + other querying tools</h1>
-      <select defaultValue="All" onChange={filterCat}>
+      <select selected={category} onChange={filterCat}>
         <option value="All">All</option>
-        {categories.map((category) => {
+        {categories.map((specificcategory) => {
           return (
-            <option key={category.slug} value={category.slug}>
-              {category.slug}
+            <option key={specificcategory.slug} value={specificcategory.slug}>
+              {specificcategory.slug}
             </option>
           );
         })}
