@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCategories } from "../utilis/api";
 
-const Query = ({
-  setSelectedCategory,
-  selectedOrder,
-  setSelectedOrder,
-  setSelectedSortBy,
-}) => {
+const Query = () => {
   const [categories, setCategories] = useState([]);
+
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [selectedSortBy, setSelectedSortBy] = useState("created_at");
+  const [selectedOrder, setSelectedOrder] = useState("desc");
 
   const navigate = useNavigate();
 
@@ -20,15 +19,23 @@ const Query = ({
 
   const filterCat = (event) => {
     setSelectedCategory(event.target.value);
+    navigate(
+      `/category/${selectedCategory}/order/${selectedOrder}/sort_by/${selectedSortBy}`
+    );
   };
 
   const filterSortBy = (event) => {
     setSelectedSortBy(event.target.value);
+    navigate(
+      `/category/${selectedCategory}/order/${selectedOrder}/sort_by/${selectedSortBy}`
+    );
   };
 
   const filterOrder = (event) => {
     setSelectedOrder(selectedOrder === "desc" ? "asc" : "desc");
-    console.log(selectedOrder);
+    navigate(
+      `/category/${selectedCategory}/order/${selectedOrder}/sort_by/${selectedSortBy}`
+    );
   };
 
   return (

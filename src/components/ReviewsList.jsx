@@ -3,17 +3,35 @@ import { getReviews } from "../utilis/api";
 import ReviewCard from "./ReviewCard";
 import ErrorPage from "./ErrorPage";
 
-const ReviewsList = ({ selectedCategory, selectedSortBy, selectedOrder }) => {
+const ReviewsList = ({
+  selectedCategory,
+  selectedSortBy,
+  selectedOrder,
+  categorytest,
+  ordertest,
+  sort_bytest,
+}) => {
   const [reviews, setReviews] = useState([]);
   const [error, setError] = useState(null);
 
+  if (!categorytest) {
+    categorytest = "All";
+  }
+  if (!ordertest) {
+    ordertest = "desc";
+  }
+
+  if (!sort_bytest) {
+    sort_bytest = "created_at";
+  }
+
   useEffect(() => {
-    getReviews(selectedCategory, selectedSortBy, selectedOrder)
+    getReviews(categorytest, sort_bytest, ordertest)
       .then(({ data }) => setReviews(data.reviews))
       .catch((err) => {
         setError(err);
       });
-  }, [selectedCategory, selectedOrder, selectedSortBy]);
+  }, [categorytest, sort_bytest, ordertest]);
 
   if (error) {
     return <ErrorPage error={error} />;

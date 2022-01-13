@@ -14,11 +14,25 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/" element={<ReviewsPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/category/:category" element={<ReviewsPage />} />
+          <Route
+            path="/category/:category/order/:order"
+            element={<ReviewsPage />}
+          />
           <Route
             path="/category/:category/order/:order/sort_by/:sort_by"
             element={<ReviewsPage />}
           />
+          <Route
+            path="/category/:category/sort_by/:sort_by"
+            element={<ReviewsPage />}
+          />
+          <Route path="/sort_by/:sort_by" element={<ReviewsPage />} />
+          <Route
+            path="/order/:order/sort_by/:sort_by"
+            element={<ReviewsPage />}
+          />
+          <Route path="/order/:order" element={<ReviewsPage />} />
           <Route path="/categories" element={<CategoriesList />} />
           <Route path="/reviews/:review_id" element={<Review />} />
           <Route
