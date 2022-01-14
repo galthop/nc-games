@@ -1,6 +1,6 @@
 import CommentCard from "./CommentCard";
 
-const CommentsList = ({ comments, setComments }) => {
+const CommentsList = ({ comments, setComments, setError }) => {
   return (
     <div className="commentsList">
       <ul>
@@ -13,6 +13,7 @@ const CommentsList = ({ comments, setComments }) => {
                 setComments={setComments}
                 comment={comment}
                 key={comment.comment_id}
+                setError={setError}
               />
             );
           })

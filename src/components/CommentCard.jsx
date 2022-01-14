@@ -1,10 +1,7 @@
 import DeleteButton from "./DeleteButton";
 import { deleteComment } from "../utilis/api";
-import { useState } from "react";
-import ErrorPage from "./ErrorPage";
 
-const CommentCard = ({ comment, setComments }) => {
-  const [error, setError] = useState(null);
+const CommentCard = ({ comment, setComments, setError }) => {
   const dayjs = require("dayjs");
 
   const handleDelete = (id) => {
@@ -21,10 +18,6 @@ const CommentCard = ({ comment, setComments }) => {
         setError(err);
       });
   };
-
-  if (error) {
-    return <ErrorPage error={error} />;
-  }
 
   return (
     <div className="commentCard">
