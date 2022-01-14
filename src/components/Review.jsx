@@ -46,7 +46,6 @@ const Review = () => {
               : review.review_img_url
           }
           alt={review.title}
-          image
         />
         <p>{review.review_body}</p>
         <p>
