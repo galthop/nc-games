@@ -1,4 +1,4 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getReviewById, patchReviewLikes } from "../utilis/api";
 import ErrorPage from "./ErrorPage";
@@ -7,6 +7,7 @@ const Review = () => {
   const { review_id } = useParams();
   const [review, setReview] = useState([]);
   const [votes, setVotes] = useState(0);
+  const dayjs = require("dayjs");
 
   const changeVotes = () => {
     setVotes((currentLikes) => currentLikes + 1);
@@ -16,9 +17,7 @@ const Review = () => {
     });
   };
 
-  //
   const [error, setError] = useState(null);
-  //
 
   useEffect(() => {
     getReviewById(review_id)
@@ -50,7 +49,9 @@ const Review = () => {
           image
         />
         <p>{review.review_body}</p>
-        <p>Created at: {review.created_at}</p>
+        <p>
+          Created at: {dayjs(review.created_at).format("MMMM D, YYYY h:mm A")}
+        </p>
         <h4>Game's designer: {review.designer}</h4>
         <h4>Category: {review.category}</h4>
       </section>

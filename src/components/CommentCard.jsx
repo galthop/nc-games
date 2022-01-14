@@ -5,8 +5,9 @@ import ErrorPage from "./ErrorPage";
 
 const CommentCard = ({ comment, setComments }) => {
   const [error, setError] = useState(null);
+  const dayjs = require("dayjs");
+
   const handleDelete = (id) => {
-    console.log("you deleted a comment");
     deleteComment(id)
       .then(() => {
         setComments((currentComments) => {
@@ -17,7 +18,6 @@ const CommentCard = ({ comment, setComments }) => {
         });
       })
       .catch((err) => {
-        console.log("error", err);
         setError(err);
       });
   };
@@ -30,7 +30,8 @@ const CommentCard = ({ comment, setComments }) => {
     <div className="commentCard">
       <li key={comment.comment_id}>
         <h3>
-          User: {comment.author}, at {comment.created_at}
+          User: {comment.author}, at{" "}
+          {dayjs(comment.created_at).format("MMMM D, YYYY h:mm A")}
         </h3>
         <p>{comment.body}</p>
         <h4>Number of votes: {comment.votes}</h4>

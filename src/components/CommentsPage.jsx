@@ -3,12 +3,9 @@ import CommentsList from "./CommentsList";
 import AddComment from "./AddComment";
 import { getComments } from "../utilis/api";
 import { useParams } from "react-router-dom";
-import ErrorPage from "./ErrorPage";
 
-const CommentsPage = () => {
+const CommentsPage = ({ setError }) => {
   const [comments, setComments] = useState([]);
-  const [error, setError] = useState(null);
-
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -21,14 +18,15 @@ const CommentsPage = () => {
       });
   }, [review_id]);
 
-  if (error) {
-    return <ErrorPage error={error} />;
-  }
   return (
     <div className="commentsPage">
       <h1>Comments for review #{review_id}</h1>
-      <AddComment setComments={setComments} />
-      <CommentsList comments={comments} setComments={setComments} />
+      <AddComment setComments={setComments} setError={setError} />
+      <CommentsList
+        comments={comments}
+        setComments={setComments}
+        setError={setError}
+      />
     </div>
   );
 };

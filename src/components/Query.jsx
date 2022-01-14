@@ -32,7 +32,6 @@ const Query = ({
 
   const filterOrder = (event) => {
     setSelectedOrder(selectedOrder === "desc" ? "asc" : "desc");
-    console.log(selectedOrder);
   };
 
   return (

@@ -1,7 +1,5 @@
 const DeleteButton = ({ comment, handleDelete }) => {
   const user = comment.author;
-
-  //assuming jessjelly is logged in and can delete their comments (but no one else's)
   return user === "jessjelly" ? (
     <button
       className="deleteButton-enabled"
