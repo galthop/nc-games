@@ -26,9 +26,7 @@ const CategoriesList = () => {
       <h1 className="categoriesHeader">Game types</h1>
       <ul className="theList">
         {categories.map((category) => {
-          return (
-            <CategoryCard category={category} key={category.category_id} />
-          );
+          return <CategoryCard category={category} />;
         })}
       </ul>
     </div>
