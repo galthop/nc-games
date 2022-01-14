@@ -1,3 +1,31 @@
+# Hiten Patel - Northcoders frontend project
+
+## Project summary:
+
+This project is a webpage about board games and their reviews. The user can interact with this webpage by searching for reviews, voting on them, posting comments and more. These requests are sent to an API, so the webpage user can update and receive information from the API's web server in real time, and see the effect of their interaction immediately.
+
+## Setup:
+
+### Step 1: Install dependencies
+
+Type the following command into your terminal:
+
+- npm install
+
+This will install every dependency you need to run this project
+
+### Step 2: Set up the backend:
+
+This project will be making use of an API. A link to the hosted version: https://northcoders-backend-hiten.herokuapp.com/api. Click on this link and take a look at the endpoints this project will be using. If you are curious about how this API works, you can find more details in the READ ME in this API's repository, which you will find here: https://github.com/galthop/be-nc-games.git.
+
+### Step 3: Run locally:
+
+Run "npm start" in your terminal
+
+## Requirements:
+
+To run this locally you will need versions: You will need at least v16.13 of Node.js and at least v12.9 of Postgres
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
