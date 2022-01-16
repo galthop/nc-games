@@ -1,6 +1,6 @@
 # Hiten Patel - Northcoders frontend project
 
-A link to the deployed version: ////////////////////////////
+A link to the deployed version: https://nc-games-hiten.netlify.app/
 
 ## Project summary:
 
