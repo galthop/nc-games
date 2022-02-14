@@ -4,7 +4,7 @@ A link to the deployed version: https://nc-games-hiten.netlify.app/
 
 ## Project summary:
 
-This project is a webpage about board games and their reviews. The user can interact with this webpage by searching for reviews, voting on them, posting comments and more. These requests are sent to an API, so the webpage user can update and receive information from the API's web server in real time, and see the effects(s) of their interaction immediately.
+This project is a webpage about board games and their reviews. The user can interact with this webpage by searching for reviews, voting on them, posting comments and more. These requests are sent to an API, so the webpage user can update and receive information from the API's web server in real time, and see the effect(s) of their interaction immediately.
 
 ## Setup:
 
@@ -16,12 +16,7 @@ To clone this repository, enter the directory you want to clone the repo to (usi
 
 Type the following commands into your terminal:
 
-- npm install react
-- npm install dayjs
-- npm install axios
-- npm install react-dom
-- npm install react-router-dom
-- npm install react-scripts
+- npm install
 
 This will install every dependency you need to run this project
 
